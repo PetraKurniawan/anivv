@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anniversary ke-7 Bulan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        background: linear-gradient(to bottom, #ffe4e6, #fbcfe8);
+        overflow-x: hidden;
+        position: relative;
+        font-family: "Segoe UI", sans-serif;
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #ff4d6d;
+        transform: rotate(45deg);
+        animation: float 10s infinite ease-in-out;
+        opacity: 0.6;
+      }
+      .heart::before,
+      .heart::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #ff4d6d;
+        border-radius: 50%;
+      }
+      .heart::before {
+        top: -10px;
+        left: 0;
+      }
+      .heart::after {
+        left: -10px;
+        top: 0;
+      }
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(45deg);
+          opacity: 0.6;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(45deg);
+          opacity: 0;
+        }
+      }
+      .btn-love {
+        background-color: #ff4d6d;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        transition: background-color 0.3s ease;
+      }
+      .btn-love:hover {
+        background-color: #e63950;
+      }
+      .photo-card {
+        transition: transform 0.3s ease;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border: none;
+      }
+      .photo-card:hover {
+        transform: translateY(-10px);
+      }
+      .photo-card img {
+        height: 250px;
+        object-fit: cover;
+      }
+      .photo-card .card-body {
+        background-color: #fff9fb;
+      }
+    </style>
+  </head>
+  <body class="text-center text-dark">
+    <!-- Floating Hearts -->
+    <script>
+      const createHeart = () => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 10000);
+      };
+      setInterval(createHeart, 300);
+    </script>
+
+    <!-- Hero Section -->
+    <section class="min-vh-100 d-flex flex-column justify-content-center align-items-center px-3 py-5">
+      <h1 class="display-4 fw-bold text-danger mb-3 fade-in">Happy 7th Anniversary! 💕</h1>
+      <p class="lead mb-4 fade-in">Terima kasih telah menjadi cahaya dalam hidupku selama 7 bulan ini 🌸</p>
+      <img src="https://media.tenor.com/xUv_xBRU1hUAAAAd/bubu-dudu-love.gif" alt="Anniversary Love" class="img-fluid rounded mb-4 fade-in" style="max-width: 300px" />
+      <button class="btn btn-love fade-in" data-bs-toggle="modal" data-bs-target="#loveLetterModal">Klik Aku 💗</button>
+    </section>
+
+    <!-- Message Section -->
+    <section class="bg-white py-5">
+      <div class="container">
+        <h2 class="text-danger fw-bold mb-4">Pesan untukmu 💌</h2>
+        <p class="lead fade-in">Kamu adalah alasan di balik setiap senyumku. Terima kasih sudah hadir dan bertahan sejauh ini. Mari terus melangkah bersama, apapun yang terjadi. Aku sayang kamu! 💖</p>
+      </div>
+    </section>
+
+    <!-- Photo Cards Section -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="text-danger fw-bold mb-5">Kenangan Indah Kita 🌸</h2>
+        <div class="row g-4">
+          <div class="col-md-4 fade-in">
+            <div class="card photo-card h-100">
+              <img src="Pantai.jpg" class="card-img-top" alt="Our Moment 1" />
+              <div class="card-body">
+                <h5 class="card-title text-danger">My world</h5>
+                <p class="card-text">Sea Date with you.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 fade-in">
+            <div class="card photo-card h-100">
+              <img src="2.jpg" class="card-img-top" alt="Our Moment 2" />
+              <div class="card-body">
+                <h5 class="card-title text-danger">My Home</h5>
+                <p class="card-text">its my home.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 fade-in">
+            <div class="card photo-card h-100">
+              <img src="3.jpg" class="card-img-top" alt="Our Moment 3" />
+              <div class="card-body">
+                <h5 class="card-title text-danger">My Love</h5>
+                <p class="card-text">Easter date.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Surat Cinta -->
+    <div class="modal fade" id="loveLetterModal" tabindex="-1" aria-labelledby="loveLetterModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
+          <div class="modal-header bg-danger text-white rounded-top-4">
+            <h5 class="modal-title" id="loveLetterModalLabel">Untuk Kamu 💌</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
+          </div>
+          <div class="modal-body text-start p-4">
+            <p>Sayangku,</p>
+            <p>Happy Anniversary yang ke 7 bulan sayangg.</p>
+            <p>Makasihh yaa sayangg telah menjadi bagian terindah dalam hidupku selama 7 bulan ini. Setiap hari saat bersamamu adalah hadiah yang tak ternilai.</p>
+            <p>Aku selalu bersyukur atas setiap tawa, pelukan, dan dukunganmu sayang. Mari kita terus berjalan bersama,tumbuh sama sama yaa sayangg, menghadapi segala suka dan duka, tangan dalam tangan.</p>
+            <p>semoga kita bisa terus sama sama yaa sayang,bukan hanya lama tapi selamanya.</p>
+            <p>Aku mencintaimu... hari ini, besok, dan seterusnya. 💖</p>
+            <p class="text-end">Dengan cinta,<br />Petra Is your BF</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Section -->
+    <section class="bg-light py-5">
+      <div class="container">
+        <h2 class="text-danger fw-bold mb-4">Main Yuk! 🎮</h2>
+        <p class="lead mb-3">Tebak angka dari 1 sampai 10. Kalau menang atau kalah, tetap ada kata cinta buat kamu! 😘</p>
+        <button class="btn btn-love mb-3" onclick="startGame()">Mainkan Game 🎲</button>
+        <div id="gameArea" class="d-none">
+          <p class="mb-2">Tebak angkanya (1-10):</p>
+          <input type="number" id="guessInput" class="form-control mb-2 w-25 mx-auto" min="1" max="10" />
+          <button class="btn btn-danger" onclick="checkGuess()">Tebak!</button>
+          <p id="gameMessage" class="mt-3 fw-bold"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-light text-muted">
+      <p class="mb-0">Dibuat dengan cinta oleh Christian Petra Kurniawan ❤️ 2025</p>
+    </footer>
+
+    <!-- Romantic Music -->
+    <audio id="romanticSong" loop>
+      <source src="WhatsApp Audio 2025-06-01 at 23.07.02_f4094bf6.dat" type="audio/mpeg" />
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Animasi fade-in saat scroll
+      document.addEventListener("DOMContentLoaded", () => {
+        const fadeIns = document.querySelectorAll(".fade-in");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+        fadeIns.forEach((el) => observer.observe(el));
+      });
+
+      // Musik romantis saat modal dibuka
+      const modal = document.getElementById("loveLetterModal");
+      const audio = document.getElementById("romanticSong");
+      modal.addEventListener("show.bs.modal", () => {
+        audio.currentTime = 0;
+        audio.play();
+      });
+      modal.addEventListener("hide.bs.modal", () => {
+        audio.pause();
+      });
+
+      let secretNumber;
+      function startGame() {
+        secretNumber = Math.floor(Math.random() * 10) + 1;
+        document.getElementById("gameArea").classList.remove("d-none");
+        document.getElementById("gameMessage").innerText = "";
+        document.getElementById("guessInput").value = "";
+      }
+
+      function checkGuess() {
+        const guess = parseInt(document.getElementById("guessInput").value);
+        const message = document.getElementById("gameMessage");
+
+        if (isNaN(guess) || guess < 1 || guess > 10) {
+          message.innerText = "Masukkan angka antara 1 dan 10, yaa sayang 😘";
+          return;
+        }
+
+        if (guess === secretNumber) {
+          message.innerText = "Kamu menang! Selamat sayanggkuu cintaakuu 💖";
+        } else {
+          message.innerText = `Salah sayang! Tapi nggak papa, kamu tetap pemenang dihatikuu sayangg 💗 (Angkanya: ${secretNumber})`;
+        }
+      }
+    </script>
+  </body>
+</html>
